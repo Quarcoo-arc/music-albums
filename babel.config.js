@@ -12,6 +12,11 @@ module.exports = function (api) {
             tests: ["./tests/"],
             "@components": "./src/components",
           },
+          env: {
+            production: {
+              plugins: ["react-native-paper/babel"],
+            },
+          },
         },
       ],
     ],
