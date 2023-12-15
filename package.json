@@ -24,7 +24,7 @@
     "react-redux": "^9.0.4",
     "redux-saga": "^1.2.3"
   },
-  "overrides": {
+  "resolutions": {
     "redux-saga": {
       "@redux-saga/core": {
         "redux": "^5.0.0"
