@@ -13,8 +13,6 @@ export default AppBar;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: 50,
     color: "white",
     backgroundColor: "blue",
     padding: 10,
