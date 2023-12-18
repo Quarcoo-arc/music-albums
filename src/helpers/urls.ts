@@ -1,3 +1,5 @@
 export const baseUrl = "https://jsonplaceholder.typicode.com";
 
-export const ALBUMS_API_URL = baseUrl + "/albums";
+export const GET_ALBUMS_URL = baseUrl + "/albums";
+
+export const GET_ALBUM_PICS_URL = baseUrl + "/photos";
