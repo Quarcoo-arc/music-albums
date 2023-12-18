@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ALBUM } from "./types";
-import { toast } from "react-toastify";
+import Toast from "react-native-root-toast";
 
 type stateType = {
   success: boolean;
@@ -34,12 +34,18 @@ export const AlbumSlice = createSlice({
       state.error = payload;
       state.isLoading = false;
       state.success = false;
-      toast.error(
+      Toast.show(
         typeof payload === "string"
           ? payload
           : payload.message && typeof payload.message === "string"
           ? payload.message
-          : "Failed to fetch albums"
+          : "Failed to fetch albums",
+        {
+          duration: Toast.durations.LONG,
+          position: Toast.positions.TOP,
+          animation: true,
+          textColor: "red",
+        }
       );
     },
   },
