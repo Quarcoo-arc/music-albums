@@ -22,8 +22,7 @@ export const albumPicsSlice = createSlice({
   reducers: {
     getAlbumPicsAction: (state: stateType, { payload }) => {
       state.error = "";
-      state.isLoading = false;
-      state.success = true;
+      state.isLoading = true;
     },
     getAlbumPicsSuccessAction: (state: stateType, { payload }) => {
       state.error = "";

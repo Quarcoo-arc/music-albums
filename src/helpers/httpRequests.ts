@@ -12,9 +12,7 @@ export const getRequest = async (url: string) => {
 export const deleteRequest = async (url: string) => {
   try {
     const response = await axios.delete(url);
-    console.log(response, response.data);
-
-    return response;
+    return response.data;
   } catch (error) {
     throw Error((error as string) || "Failed to delete resource");
   }
