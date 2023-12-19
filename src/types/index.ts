@@ -1,5 +1,5 @@
 type AlbumType = {
-  albumId: number;
+  id: number;
   userId: number;
   title: string;
 };

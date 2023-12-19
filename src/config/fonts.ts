@@ -15,6 +15,10 @@ const customVariants = {
     ...baseVariants.bodyMedium,
     fontFamily: "Roboto-Bold",
   },
+  styled: {
+    ...baseVariants.headlineLarge,
+    fontFamily: "Pacifico",
+  },
 } as const;
 
 const fonts = configureFonts({

@@ -13,6 +13,9 @@ import fonts from "config/fonts";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { MaterialCommunityIcons as MaterialIcons } from "@expo/vector-icons";
+import { Platform } from "react-native";
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -22,6 +25,7 @@ export default function App() {
       "Roboto-Bold": require("./src/assets/fonts/Roboto_Bold.ttf"),
       "Roboto-Medium": require("./src/assets/fonts/Roboto_Medium.ttf"),
       "Roboto-Regular": require("./src/assets/fonts/Roboto_Regular.ttf"),
+      Pacifico: require("./src/assets/fonts/Pacifico.ttf"),
     });
   };
 
@@ -63,7 +67,17 @@ export default function App() {
       <Provider store={store}>
         <RootSiblingParent>
           <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator
+              screenOptions={{
+                header: (props) => (
+                  <SafeAreaView
+                    className={
+                      Platform.OS === "android" ? "h-24 justify-center" : ""
+                    }
+                  ></SafeAreaView>
+                ),
+              }}
+            >
               <Stack.Screen
                 name="Home"
                 component={Home}

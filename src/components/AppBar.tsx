@@ -3,18 +3,12 @@ import { StyleSheet, Text, View } from "react-native";
 
 const AppBar = () => {
   return (
-    <View style={styles.container}>
-      <Text>MusicAlbums 📖</Text>
+    <View className="pt-5 pb-3 bg-slate-500">
+      <Text className="text-2xl font-[Pacifico] mt-5 text-center text-white">
+        Music Albums 🎶
+      </Text>
     </View>
   );
 };
 
 export default AppBar;
-
-const styles = StyleSheet.create({
-  container: {
-    color: "white",
-    backgroundColor: "blue",
-    padding: 10,
-  },
-});

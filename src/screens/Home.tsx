@@ -1,6 +1,6 @@
-import { AppBar } from "components";
+import { AlbumItem, AppBar } from "components";
 import React, { useEffect } from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import { getAllAlbumsAction } from "store/Album/reducer";
@@ -18,13 +18,14 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <View>
+    <View className="pb-3">
       <AppBar />
-      <Text>Home</Text>
-      {data &&
-        data.map(({ title }: { title: string }, idx: number) => (
-          <Text key={idx}>{title}</Text>
-        ))}
+      <ScrollView className="mb-24 px-3 flex flex-col">
+        {data &&
+          data.map((album: AlbumType) => (
+            <AlbumItem key={album.id} albumInfo={album} />
+          ))}
+      </ScrollView>
     </View>
   );
 };
