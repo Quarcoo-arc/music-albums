@@ -64,7 +64,11 @@ export default function App() {
         <RootSiblingParent>
           <NavigationContainer>
             <Stack.Navigator>
-              <Stack.Screen name="Home" component={Home} />
+              <Stack.Screen
+                name="Home"
+                component={Home}
+                options={{ headerShown: false }}
+              />
             </Stack.Navigator>
             <StatusBar style="auto" />
           </NavigationContainer>

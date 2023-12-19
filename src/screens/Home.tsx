@@ -4,11 +4,14 @@ import { Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import { getAllAlbumsAction } from "store/Album/reducer";
+import { AlbumType } from "types";
 
 const Home = () => {
   const dispatch = useDispatch();
 
-  const { data } = useSelector((state: RootState) => state.albums);
+  const { data }: { data: AlbumType[] } = useSelector(
+    (state: RootState) => state.albums
+  );
 
   useEffect(() => {
     dispatch(getAllAlbumsAction());
