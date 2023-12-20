@@ -15,7 +15,13 @@ const Pagination = ({ count, pageNum, setPageNum, itemsPerPage }: Props) => {
       <SegmentedButtons
         value={pageNum.toString()}
         onValueChange={(value) => setPageNum(+value)}
-        buttons={Array(count / itemsPerPage)
+        buttons={Array(
+          !count
+            ? 1
+            : count < itemsPerPage
+            ? itemsPerPage
+            : Math.ceil(count / itemsPerPage)
+        )
           .fill(1)
           .map((_, idx) => ({
             value: (idx + 1).toString(),
