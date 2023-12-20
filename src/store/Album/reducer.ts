@@ -42,9 +42,10 @@ export const AlbumSlice = createSlice({
           : "Failed to fetch albums",
         {
           duration: Toast.durations.LONG,
-          position: Toast.positions.TOP,
+          position: Toast.positions.BOTTOM,
           animation: true,
-          textColor: "red",
+          shadow: true,
+          hideOnPress: true,
         }
       );
     },

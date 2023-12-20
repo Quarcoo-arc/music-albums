@@ -2,9 +2,9 @@ import { AlbumItem, AppBar, Pagination } from "components";
 import { AlbumsContext } from "context/AlbumsContext";
 import React, { useEffect, useRef, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
-import Toast from "react-native-root-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
+import { deleteAlbumAction } from "store/Album/DeleteAlbum/reducer";
 import { getAllAlbumsAction } from "store/Album/reducer";
 import { AlbumType } from "types";
 
@@ -45,14 +45,8 @@ const Home = () => {
   }, [pageNum, albums]);
 
   const deleteAlbum = (albumId: number) => {
+    dispatch(deleteAlbumAction(albumId));
     setAlbums((prev) => prev.filter((item) => item.id !== albumId));
-    Toast.show("Successfully deleted album", {
-      duration: Toast.durations.LONG,
-      position: Toast.positions.BOTTOM,
-      animation: true,
-      hideOnPress: true,
-      shadow: true,
-    });
   };
 
   return (

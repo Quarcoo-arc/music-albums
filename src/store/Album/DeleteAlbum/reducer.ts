@@ -27,9 +27,10 @@ export const deleteAlbumSlice = createSlice({
       state.success = true;
       Toast.show("Successfully deleted album", {
         duration: Toast.durations.LONG,
-        position: Toast.positions.TOP,
+        position: Toast.positions.BOTTOM,
         animation: true,
-        textColor: "green",
+        hideOnPress: true,
+        shadow: true,
       });
     },
     deleteAlbumErrorAction: (state: stateType, { payload }) => {
