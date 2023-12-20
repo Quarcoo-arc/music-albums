@@ -1,14 +1,8 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, { ReactNode } from "react";
+import { View } from "react-native";
 
-const AppBar = () => {
-  return (
-    <View className="pt-5 pb-3 bg-slate-500">
-      <Text className="text-2xl font-[Pacifico] mt-5 text-center text-white">
-        Music Albums 🎶
-      </Text>
-    </View>
-  );
+const AppBar = ({ children }: { children: ReactNode }) => {
+  return <View className="pt-5 pb-3 bg-slate-500">{children}</View>;
 };
 
 export default AppBar;

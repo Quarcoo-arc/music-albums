@@ -19,7 +19,11 @@ const Home = () => {
 
   return (
     <View className="pb-3">
-      <AppBar />
+      <AppBar>
+        <Text className="text-2xl font-[Pacifico] mt-5 text-center text-white">
+          Music Albums 🎶
+        </Text>
+      </AppBar>
       <ScrollView className="mb-24 px-3 flex flex-col">
         {data &&
           data.map((album: AlbumType) => (
