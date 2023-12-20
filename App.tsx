@@ -15,7 +15,6 @@ import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect, useState } from "react";
 import { Album } from "screens";
 import { RootStackParamList } from "types";
-import AlbumsContextProvider from "context/AlbumsContext";
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -65,25 +64,23 @@ export default function App() {
   return (
     <PaperProvider theme={{ ...theme, fonts }}>
       <Provider store={store}>
-        <AlbumsContextProvider>
-          <RootSiblingParent>
-            <NavigationContainer>
-              <Stack.Navigator>
-                <Stack.Screen
-                  name="Home"
-                  component={Home}
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="Album"
-                  component={Album}
-                  options={{ headerShown: false }}
-                />
-              </Stack.Navigator>
-              <StatusBar style="auto" />
-            </NavigationContainer>
-          </RootSiblingParent>
-        </AlbumsContextProvider>
+        <RootSiblingParent>
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Home"
+                component={Home}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Album"
+                component={Album}
+                options={{ headerShown: false }}
+              />
+            </Stack.Navigator>
+            <StatusBar style="auto" />
+          </NavigationContainer>
+        </RootSiblingParent>
       </Provider>
     </PaperProvider>
   );

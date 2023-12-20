@@ -5,7 +5,11 @@ export const getRequest = async (url: string) => {
     const response = await axios.get(url);
     return response.data;
   } catch (error) {
-    throw Error((error as string) || "Failed to fetch data");
+    if (error instanceof Error) {
+      throw error.message;
+    } else {
+      throw String(error);
+    }
   }
 };
 
@@ -14,6 +18,10 @@ export const deleteRequest = async (url: string) => {
     const response = await axios.delete(url);
     return response.data;
   } catch (error) {
-    throw Error((error as string) || "Failed to delete resource");
+    if (error instanceof Error) {
+      throw error.message;
+    } else {
+      throw String(error);
+    }
   }
 };

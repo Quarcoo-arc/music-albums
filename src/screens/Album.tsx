@@ -44,7 +44,9 @@ const Album = ({ route }: Props) => {
       </AppBar>
       <ScrollView className="mb-24 px-3 flex flex-col">
         {data &&
-          data.map((track: AlbumPhotoType) => <TrackCard track={track} />)}
+          data.map((track: AlbumPhotoType) => (
+            <TrackCard key={track.id} track={track} />
+          ))}
       </ScrollView>
     </View>
   );
