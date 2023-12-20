@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Pressable, Text } from "react-native";
 import { AlbumType } from "types";
 import { MaterialCommunityIcons as MaterialIcons } from "@expo/vector-icons";
-import Toast from "react-native-root-toast";
 import { useLinkProps } from "@react-navigation/native";
 import { AlbumsContext } from "context/AlbumsContext";
 import { Button, Dialog, Portal } from "react-native-paper";

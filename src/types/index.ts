@@ -17,4 +17,20 @@ type RootStackParamList = {
   Album: AlbumType;
 };
 
-export { type AlbumType, type AlbumPhotoType, type RootStackParamList };
+type User = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: {};
+  phone: string;
+  website: string;
+  company: {};
+};
+
+export {
+  type AlbumType,
+  type AlbumPhotoType,
+  type RootStackParamList,
+  type User,
+};

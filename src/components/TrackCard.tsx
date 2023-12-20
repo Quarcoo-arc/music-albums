@@ -6,10 +6,11 @@ const TrackCard = ({ track }: { track: AlbumPhotoType }) => {
   return (
     <Card className="my-3" mode="elevated">
       <Card.Cover source={{ uri: track.thumbnailUrl }} />
-      <Card.Title title={track.title} />
+      <Card.Title title={<Text className="italic">{`# ${track.id}`}</Text>} />
       <Card.Content>
-        <Text variant="titleLarge">{track.title}</Text>
-        <Text variant="bodyMedium">{track.url}</Text>
+        <Text className="font-medium" variant="titleLarge">
+          {track.title}
+        </Text>
       </Card.Content>
     </Card>
   );
