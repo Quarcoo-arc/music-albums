@@ -13,9 +13,8 @@ import fonts from "config/fonts";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { MaterialCommunityIcons as MaterialIcons } from "@expo/vector-icons";
-import { Platform } from "react-native";
+import { Album } from "screens";
+import { RootStackParamList } from "types";
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -29,7 +28,7 @@ export default function App() {
     });
   };
 
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   const theme = {
     ...DefaultTheme,
@@ -67,20 +66,15 @@ export default function App() {
       <Provider store={store}>
         <RootSiblingParent>
           <NavigationContainer>
-            <Stack.Navigator
-              screenOptions={{
-                header: (props) => (
-                  <SafeAreaView
-                    className={
-                      Platform.OS === "android" ? "h-24 justify-center" : ""
-                    }
-                  ></SafeAreaView>
-                ),
-              }}
-            >
+            <Stack.Navigator>
               <Stack.Screen
                 name="Home"
                 component={Home}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Album"
+                component={Album}
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>

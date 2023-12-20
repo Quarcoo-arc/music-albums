@@ -12,4 +12,9 @@ type AlbumPhotoType = {
   thumbnailUrl: string;
 };
 
-export { type AlbumType, type AlbumPhotoType };
+type RootStackParamList = {
+  Home: undefined;
+  Album: AlbumType;
+};
+
+export { type AlbumType, type AlbumPhotoType, type RootStackParamList };
