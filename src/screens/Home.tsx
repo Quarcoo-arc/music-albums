@@ -1,6 +1,8 @@
 import { AlbumItem, AppBar, Pagination } from "components";
+import { AlbumsContext } from "context/AlbumsContext";
 import React, { useEffect, useRef, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
+import Toast from "react-native-root-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import { getAllAlbumsAction } from "store/Album/reducer";
@@ -42,6 +44,17 @@ const Home = () => {
     scrollToTop();
   }, [pageNum, albums]);
 
+  const deleteAlbum = (albumId: number) => {
+    setAlbums((prev) => prev.filter((item) => item.id !== albumId));
+    Toast.show("Successfully deleted album", {
+      duration: Toast.durations.LONG,
+      position: Toast.positions.BOTTOM,
+      animation: true,
+      hideOnPress: true,
+      shadow: true,
+    });
+  };
+
   return (
     <View className="pb-3">
       <AppBar>
@@ -50,16 +63,18 @@ const Home = () => {
         </Text>
       </AppBar>
       <ScrollView ref={scrollRef} className="mb-24 px-3 flex flex-col">
-        {displayAlbums &&
-          displayAlbums.map((album: AlbumType) => (
-            <AlbumItem key={album.id} albumInfo={album} />
-          ))}
-        <Pagination
-          count={albums.length}
-          pageNum={pageNum}
-          setPageNum={setPageNum}
-          itemsPerPage={itemsPerPage}
-        />
+        <AlbumsContext.Provider value={{ deleteAlbum }}>
+          {displayAlbums &&
+            displayAlbums.map((album: AlbumType) => (
+              <AlbumItem key={album.id} albumInfo={album} />
+            ))}
+          <Pagination
+            count={albums.length}
+            pageNum={pageNum}
+            setPageNum={setPageNum}
+            itemsPerPage={itemsPerPage}
+          />
+        </AlbumsContext.Provider>
       </ScrollView>
     </View>
   );
