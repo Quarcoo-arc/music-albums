@@ -22,7 +22,7 @@ export const deleteAlbumSlice = createSlice({
       state.error = "";
       state.isLoading = true;
     },
-    deleteAlbumSuccessAction: (state: stateType, payload) => {
+    deleteAlbumSuccessAction: (state: stateType, { payload }) => {
       (state.error = ""), (state.isLoading = false);
       state.success = true;
       Toast.show("Successfully deleted album", {
