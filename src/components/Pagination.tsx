@@ -13,6 +13,12 @@ const Pagination = ({ count, pageNum, setPageNum, itemsPerPage }: Props) => {
   return (
     <SafeAreaView className="flex-1 items-center my-4">
       <SegmentedButtons
+        theme={{
+          colors: {
+            secondaryContainer: "#64748b",
+            onSecondaryContainer: "white",
+          },
+        }}
         value={pageNum.toString()}
         onValueChange={(value) => setPageNum(+value)}
         buttons={Array(

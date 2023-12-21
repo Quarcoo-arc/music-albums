@@ -45,15 +45,21 @@ const AlbumItem = ({ albumInfo }: { albumInfo: AlbumType }) => {
       </Portal>
       <List.Item
         onPress={onPress}
-        className="bg-slate-300 py-5 my-4"
-        title={albumInfo.title}
-        description={descriptions[Math.floor(Math.random() * 7)]}
+        className="bg-slate-500 py-5 my-4"
+        title={
+          <Text className="text-white font-semibold">{albumInfo.title}</Text>
+        }
+        description={
+          <Text className="text-gray-200">
+            {descriptions[Math.floor(Math.random() * 7)]}
+          </Text>
+        }
         right={(props) => (
           <MaterialIcons
             {...props}
             name="delete"
             size={24}
-            color="red"
+            color="#cf0404"
             onPress={() => setShowDialog(true)}
           />
         )}
@@ -63,6 +69,7 @@ const AlbumItem = ({ albumInfo }: { albumInfo: AlbumType }) => {
             size={24}
             name="folder-music"
             onPress={onPress}
+            color="#e5e7eb"
           />
         )}
       />
