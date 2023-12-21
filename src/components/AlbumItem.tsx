@@ -1,10 +1,20 @@
 import React, { useContext, useState } from "react";
-import { Pressable, Text } from "react-native";
+import { Text, View } from "react-native";
 import { AlbumType } from "types";
 import { MaterialCommunityIcons as MaterialIcons } from "@expo/vector-icons";
 import { useLinkProps } from "@react-navigation/native";
 import { AlbumsContext } from "context/AlbumsContext";
-import { Button, Dialog, Portal } from "react-native-paper";
+import { Button, Dialog, List, Portal } from "react-native-paper";
+
+const descriptions = [
+  "A beautiful Hip Hop album released in 2019",
+  "Most listened-to R&B album world-wide in 2018",
+  "Hot Afrobeats music you most certainly would love",
+  "Music orchestra that southens the soul",
+  "Pop music that will make you want to pop off",
+  "Heavy Metal music for the alkaline folks",
+  "The Best of Jazz Music for the sax lovers",
+];
 
 const AlbumItem = ({ albumInfo }: { albumInfo: AlbumType }) => {
   const [showDialog, setShowDialog] = useState(false);
@@ -16,34 +26,47 @@ const AlbumItem = ({ albumInfo }: { albumInfo: AlbumType }) => {
   });
   const { deleteAlbum } = useContext(AlbumsContext);
   return (
-    <Pressable
-      className="bg-slate-300 p-5 rounded my-4 flex flex-row items-center justify-between"
-      onPress={onPress}
-    >
+    <View>
       <Portal>
         <Dialog visible={showDialog} onDismiss={hideDialog}>
           <Dialog.Title>Confirm Delete</Dialog.Title>
+
           <Dialog.Content>
             <Text className="font-medium">
               Are you sure you want to delete this album?
             </Text>
           </Dialog.Content>
+
           <Dialog.Actions>
             <Button onPress={hideDialog}>Cancel</Button>
             <Button onPress={() => deleteAlbum(albumInfo.id)}>Yes</Button>
           </Dialog.Actions>
         </Dialog>
       </Portal>
-      <Text className="italic w-1/12">{albumInfo.id}</Text>
-      <Text className="font-bold underline w-10/12">{albumInfo.title}</Text>
-      <MaterialIcons
-        name="delete"
-        size={24}
-        color="red"
-        className="inline-block w-1/12"
-        onPress={() => setShowDialog(true)}
+      <List.Item
+        onPress={onPress}
+        className="bg-slate-300 py-5 my-4"
+        title={albumInfo.title}
+        description={descriptions[Math.floor(Math.random() * 7)]}
+        right={(props) => (
+          <MaterialIcons
+            {...props}
+            name="delete"
+            size={24}
+            color="red"
+            onPress={() => setShowDialog(true)}
+          />
+        )}
+        left={(props) => (
+          <MaterialIcons
+            {...props}
+            size={24}
+            name="folder-music"
+            onPress={onPress}
+          />
+        )}
       />
-    </Pressable>
+    </View>
   );
 };
 
